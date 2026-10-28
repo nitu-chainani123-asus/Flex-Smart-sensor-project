@@ -1,7 +1,8 @@
 
 import { useState } from 'react'
 import Sidebar from './components/Sidebar'
-
+import AdminSidebar from './components/AdminSidebar'
+import AdminDashboard from './pages/AdminDashboard'
 const exercises = [
   { name: 'Knee Flexion', detail: '3 sets × 15 reps', status: 'Completed', icon: '✓' },
   { name: 'Quadriceps Stretch', detail: '3 sets × 20 seconds', status: 'Completed', icon: '✓' },
@@ -12,6 +13,7 @@ const exercises = [
 
 function App() {
   const [activePage, setActivePage] = useState('Dashboard Overview')
+  const [activeRole, setActiveRole] = useState('Patient')
   const [completed, setCompleted] = useState([true, true, false, false, false])
 
   const completedCount = completed.filter(Boolean).length
@@ -380,6 +382,7 @@ function App() {
               </div>
             </section>
           )}
+          
         </main>
       </div>
     </div>
