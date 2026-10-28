@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Sidebar from './components/Sidebar'
 import AdminSidebar from './components/AdminSidebar'
 import AdminDashboard from './pages/AdminDashboard'
+import AdminPage from './pages/AdminPage'
+import PhysioPage from './pages/PhysioPage'
 const exercises = [
   { name: 'Knee Flexion', detail: '3 sets × 15 reps', status: 'Completed', icon: '✓' },
   { name: 'Quadriceps Stretch', detail: '3 sets × 20 seconds', status: 'Completed', icon: '✓' },
@@ -13,6 +15,24 @@ const exercises = [
 
 function App() {
   const [activePage, setActivePage] = useState('Dashboard Overview')
+  const [previewRole, setPreviewRole] = useState('Patient')
+  const previewSelector = (
+  <div className="fixed bottom-4 right-4 z-50 rounded-xl border border-slate-200 bg-white p-3 shadow-lg">
+    <label className="mb-1 block text-xs font-semibold text-slate-500">
+      Temporary Page Preview
+    </label>
+
+    <select
+      value={previewRole}
+      onChange={(e) => setPreviewRole(e.target.value)}
+      className="rounded-lg border border-slate-200 px-3 py-2 text-sm"
+    >
+      <option value="Patient">Patient</option>
+      <option value="Admin">Admin</option>
+      <option value="Physiotherapist">Physiotherapist</option>
+    </select>
+  </div>
+)
   const [activeRole, setActiveRole] = useState('Patient')
   const [completed, setCompleted] = useState([true, true, false, false, false])
 
@@ -24,9 +44,27 @@ function App() {
       previous.map((value, i) => (i === index ? !value : value))
     )
   }
+if (previewRole === 'Admin') {
+  return (
+    <>
+      {previewSelector}
+      <AdminPage />
+    </>
+  )
+}
+
+if (previewRole === 'Physiotherapist') {
+  return (
+    <>
+      {previewSelector}
+      <PhysioPage />
+    </>
+  )
+}
 
   return (
     <div className="min-h-screen bg-[#f4f7fc] text-slate-800 md:flex">
+      {previewSelector}
       <Sidebar activePage={activePage} setActivePage={setActivePage} />
 
       <div className="min-w-0 flex-1">
