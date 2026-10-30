@@ -3,6 +3,7 @@ import { useState } from 'react'
 import PhysioSidebar from '../components/PhysioSidebar'
 import MyPatients from './MyPatients'
 import PatientDetails from './PatientDetails'
+import PhysioDashboard from './PhysioDashboard'
 
 function PhysioPage() {
   const [activePage, setActivePage] = useState('My Patients')
@@ -18,16 +19,7 @@ function PhysioPage() {
         <div className="mx-auto max-w-7xl">
           {activePage === 'My Patients' && <MyPatients />}
           {activePage === 'Patient Details' && <PatientDetails />}
-          {activePage === 'Dashboard Overview' && (
-            <section>
-              <h1 className="text-3xl font-bold text-slate-900">
-                Physiotherapist Dashboard
-              </h1>
-              <p className="mt-3 text-slate-500">
-                Select My Patients to view the demonstration patient list.
-              </p>
-            </section>
-          )}
+          {activePage === 'Dashboard Overview' && <PhysioDashboard />}
         </div>
       </main>
     </div>
