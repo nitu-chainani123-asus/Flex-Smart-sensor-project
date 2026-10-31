@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import AdminSidebar from '../components/AdminSidebar'
 import AdminDashboard from './AdminDashboard'
+import AdminUserManagement from './AdminUserManagement'
 
 function AdminPage() {
   const [activePage, setActivePage] = useState('Dashboard Overview')
@@ -15,8 +16,12 @@ function AdminPage() {
 
       <main className="min-w-0 flex-1 p-5 md:p-8 lg:p-10">
         <div className="mx-auto max-w-7xl">
-          <AdminDashboard />
-        </div>
+
+          {activePage === 'Dashboard Overview' && <AdminDashboard />}
+
+          {activePage === 'User Management' && <AdminUserManagement />}
+
+</div>
       </main>
     </div>
   )

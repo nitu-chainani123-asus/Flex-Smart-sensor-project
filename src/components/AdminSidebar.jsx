@@ -1,8 +1,9 @@
 
 function AdminSidebar({ activePage, setActivePage }) {
   const menuItems = [
-    { name: 'Dashboard Overview', icon: '⌂' },
-  ]
+  { name: 'Dashboard Overview', icon: '⌂' },
+  { name: 'User Management', icon: '♙' },
+]
 
   return (
     <aside className="flex w-full shrink-0 flex-col bg-[#14233f] text-white md:min-h-screen md:w-64">
