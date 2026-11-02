@@ -4,6 +4,8 @@ function Sidebar({ activePage, setActivePage }) {
     { name: 'Dashboard Overview', icon: '⌂' },
     { name: 'Exercise Plan', icon: '✳' },
     { name: 'Help Centre', icon: '?' },
+    { name: 'Assessment Details', icon: '▤' },
+    { name: 'Assessment Report', icon: '▥' },
   ]
 
   return (

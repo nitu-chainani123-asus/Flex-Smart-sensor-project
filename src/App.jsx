@@ -5,6 +5,8 @@ import AdminSidebar from './components/AdminSidebar'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminPage from './pages/AdminPage'
 import PhysioPage from './pages/PhysioPage'
+import UserAssessment from './pages/UserAssessment'
+import UserReport from './pages/UserReport'
 const exercises = [
   { name: 'Knee Flexion', detail: '3 sets × 15 reps', status: 'Completed', icon: '✓' },
   { name: 'Quadriceps Stretch', detail: '3 sets × 20 seconds', status: 'Completed', icon: '✓' },
@@ -384,6 +386,12 @@ if (previewRole === 'Physiotherapist') {
 
           {activePage === 'Help Centre' && (
             <section>
+              {activePage === 'Assessment Details' && (
+          <UserAssessment
+            onOpenReport={() => setActivePage('Assessment Report')}
+             />
+        )}
+              
               <PageHeading
                 eyebrow="WE'RE HERE TO HELP"
                 title="Help Centre"
@@ -420,6 +428,18 @@ if (previewRole === 'Physiotherapist') {
               </div>
             </section>
           )}
+          {/* USER ASSESSMENT PAGE */}
+
+              {activePage === 'Assessment Details' && (
+              <UserAssessment
+              onOpenReport={() => setActivePage('Assessment Report')}
+              />
+             )}
+              {/* USER REPORT PAGE */}
+
+              {activePage === 'Assessment Report' && (
+              <UserReport />
+            )}
           
         </main>
       </div>
