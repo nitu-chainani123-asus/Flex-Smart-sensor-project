@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-function MyPatients() {
+function MyPatients({ onViewDetails }) {
   const [search, setSearch] = useState('')
   const [selectedPatient, setSelectedPatient] = useState(null)
 
@@ -228,7 +228,10 @@ function MyPatients() {
 
                 <button
                   type="button"
-                  onClick={() => setSelectedPatient(patient)}
+                  onClick={() => {
+                    setSelectedPatient(patient)
+                    onViewDetails?.(patient)
+                  }}
                   className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
                 >
                   View Details

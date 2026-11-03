@@ -1,17 +1,17 @@
 
-function AdminDashboard() {
+function AdminDashboard({ users }) {
   const stats = [
     {
       title: 'Registered Patients',
-      value: '24',
-      note: 'Illustrative demo count',
+      value: users.filter((user) => user.role === 'Patient').length,
+      note: 'Current sample account count',
       icon: '♙',
       color: 'bg-blue-50 text-blue-700',
     },
     {
       title: 'Physiotherapists',
-      value: '4',
-      note: 'Illustrative demo count',
+      value: users.filter((user) => user.role === 'Physiotherapist').length,
+      note: 'Current sample account count',
       icon: '✚',
       color: 'bg-violet-50 text-violet-700',
     },

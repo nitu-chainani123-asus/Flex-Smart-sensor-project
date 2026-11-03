@@ -1,11 +1,27 @@
 
-function PatientDetails() {
-  const patient = {
-    name: 'Aarav Sharma',
-    patientId: 'SF-P001',
-    age: 'Not available',
-    joint: 'Not assigned',
-    assessmentStatus: 'Pending',
+function PatientDetails({ patient }) {
+  if (!patient) {
+    return (
+      <section>
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">
+          PHYSIOTHERAPIST WORKSPACE
+        </p>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+          Patient Details
+        </h1>
+        <p className="mt-3 max-w-2xl leading-7 text-slate-500">
+          Select a patient from My Patients to view their details.
+        </p>
+      </section>
+    )
+  }
+
+  const patientDetails = {
+    name: patient.name,
+    patientId: patient.patientId,
+    age: patient.age || 'Not available',
+    joint: patient.joint || 'Not assigned',
+    assessmentStatus: patient.assessmentStatus || patient.status || 'Pending',
   }
 
   const assessmentItems = [
@@ -51,38 +67,38 @@ function PatientDetails() {
       <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-2xl font-bold text-blue-700">
-            {patient.name.charAt(0)}
+            {patientDetails.name.charAt(0)}
           </div>
 
           <div className="flex-1">
             <h2 className="text-xl font-bold text-slate-900">
-              {patient.name}
+              {patientDetails.name}
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              Patient ID: {patient.patientId}
+              Patient ID: {patientDetails.patientId}
             </p>
           </div>
 
           <span className="w-fit rounded-full bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-700">
-            Assessment {patient.assessmentStatus}
+            Assessment {patientDetails.assessmentStatus}
           </span>
         </div>
 
         <div className="mt-6 grid gap-4 border-t border-slate-100 pt-6 sm:grid-cols-3">
           <div>
             <p className="text-sm text-slate-500">Age</p>
-            <p className="mt-1 font-semibold text-slate-800">{patient.age}</p>
+            <p className="mt-1 font-semibold text-slate-800">{patientDetails.age}</p>
           </div>
 
           <div>
             <p className="text-sm text-slate-500">Joint</p>
-            <p className="mt-1 font-semibold text-slate-800">{patient.joint}</p>
+            <p className="mt-1 font-semibold text-slate-800">{patientDetails.joint}</p>
           </div>
 
           <div>
             <p className="text-sm text-slate-500">Assessment Status</p>
             <p className="mt-1 font-semibold text-slate-800">
-              {patient.assessmentStatus}
+              {patientDetails.assessmentStatus}
             </p>
           </div>
         </div>

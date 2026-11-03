@@ -1,47 +1,7 @@
 import { useState } from 'react'
+import { demoAssessment as assessment, demoReadings as readings } from './demoAssessment'
 
 function UserAssessment({ onOpenReport }) {
-
-  // SAMPLE ASSESSMENT DATA
-
-  const assessment = {
-    id: 'SF-AS-001',
-    patientId: 'SF-P001',
-    patientName: 'Aarav Sharma',
-    date: '31 October 2026',
-    time: '10:30 AM',
-    joint: 'Knee',
-    deviceId: 'SF-DEVICE-001',
-    status: 'Completed',
-
-    minAngle: 10,
-    maxAngle: 125,
-    rangeOfMotion: 115,
-
-    aiClassification: 'Normal Range',
-    modelVersion: 'Model v1.0',
-    confidence: 92,
-
-    duration: '02:35 Minutes',
-  }
-
-
-  // SAMPLE SENSOR READINGS
-
-  const readings = [
-    { time: '10:30:00', angle: 10 },
-    { time: '10:30:10', angle: 25 },
-    { time: '10:30:20', angle: 42 },
-    { time: '10:30:30', angle: 58 },
-    { time: '10:30:40', angle: 75 },
-    { time: '10:30:50', angle: 90 },
-    { time: '10:31:00', angle: 105 },
-    { time: '10:31:10', angle: 125 },
-    { time: '10:31:20', angle: 110 },
-    { time: '10:31:30', angle: 85 },
-  ]
-
-
   // SAMPLE RECOMMENDATIONS
 
   const recommendations = [
@@ -131,9 +91,9 @@ function UserAssessment({ onOpenReport }) {
         </p>
 
         <p className="mt-1 text-sm leading-6 text-amber-800">
-          All readings and assessment information displayed
+          All readings, measurements, and AI classifications displayed
           on this page are sample data for frontend development.
-          They are not actual clinical measurements.
+          They are not actual clinical results or a diagnosis.
         </p>
 
       </div>
@@ -565,7 +525,7 @@ function UserAssessment({ onOpenReport }) {
           </h2>
 
           <p className="mt-1 text-sm text-slate-500">
-            Model-generated result, when available
+            No live AI assessment is connected; the displayed result is illustrative.
           </p>
 
         </div>
@@ -573,8 +533,8 @@ function UserAssessment({ onOpenReport }) {
 
         <div className="rounded-xl border border-blue-100 bg-blue-50 p-5">
 
-          <p className="text-sm font-medium text-blue-800">
-            Classification Result
+          <p className="text-sm font-semibold text-amber-800">
+            Sample AI classification — not a clinical result
           </p>
 
           <h3 className="mt-3 text-2xl font-bold text-blue-900">

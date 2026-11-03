@@ -1,8 +1,6 @@
 
 import { useState } from 'react'
 import Sidebar from './components/Sidebar'
-import AdminSidebar from './components/AdminSidebar'
-import AdminDashboard from './pages/AdminDashboard'
 import AdminPage from './pages/AdminPage'
 import PhysioPage from './pages/PhysioPage'
 import UserAssessment from './pages/userassessment'
@@ -35,7 +33,6 @@ function App() {
     </select>
   </div>
 )
-  const [activeRole, setActiveRole] = useState('Patient')
   const [completed, setCompleted] = useState([true, true, false, false, false])
 
   const completedCount = completed.filter(Boolean).length
@@ -333,7 +330,9 @@ if (previewRole === 'Physiotherapist') {
               <div className="mb-6 rounded-2xl border border-blue-100 bg-blue-50 p-5">
                 <p className="font-semibold text-blue-900">Your exercise checklist</p>
                 <p className="mt-1 text-sm leading-6 text-blue-800">
-                  These are demo exercises only. Your team must approve the final joint and exercise selection before they are used.
+                  These exercise names and set counts are illustrative only.
+                  Movement instructions are not provided here; follow only a
+                  plan and instructions reviewed by your physiotherapist.
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-7">
@@ -386,12 +385,6 @@ if (previewRole === 'Physiotherapist') {
 
           {activePage === 'Help Centre' && (
             <section>
-              {activePage === 'Assessment Details' && (
-          <UserAssessment
-            onOpenReport={() => setActivePage('Assessment Report')}
-             />
-        )}
-              
               <PageHeading
                 eyebrow="WE'RE HERE TO HELP"
                 title="Help Centre"
