@@ -5,8 +5,8 @@ import AdminSidebar from './components/AdminSidebar'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminPage from './pages/AdminPage'
 import PhysioPage from './pages/PhysioPage'
-import UserAssessment from './pages/UserAssessment'
-import UserReport from './pages/UserReport'
+import UserAssessment from './pages/userassessment'
+import UserReport from './pages/userreport'
 const exercises = [
   { name: 'Knee Flexion', detail: '3 sets × 15 reps', status: 'Completed', icon: '✓' },
   { name: 'Quadriceps Stretch', detail: '3 sets × 20 seconds', status: 'Completed', icon: '✓' },

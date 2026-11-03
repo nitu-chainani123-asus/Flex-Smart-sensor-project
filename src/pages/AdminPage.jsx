@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import AdminSidebar from '../components/AdminSidebar'
 import AdminDashboard from './AdminDashboard'
-import AdminUserManagement from './AdminUserManagement'
+import AdminUserManagement from './Adminusermanagement'
 
 function AdminPage() {
   const [activePage, setActivePage] = useState('Dashboard Overview')
