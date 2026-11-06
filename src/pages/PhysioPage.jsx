@@ -4,6 +4,7 @@ import PhysioSidebar from '../components/PhysioSidebar'
 import MyPatients from './MyPatients'
 import PatientDetails from './PatientDetails'
 import PhysioDashboard from './PhysioDashboard'
+import PhysioAssessment from './PhysioAssessment'
 
 function PhysioPage() {
   const [activePage, setActivePage] = useState('My Patients')
@@ -20,6 +21,7 @@ function PhysioPage() {
           {activePage === 'My Patients' && <MyPatients />}
           {activePage === 'Patient Details' && <PatientDetails />}
           {activePage === 'Dashboard Overview' && <PhysioDashboard />}
+          {activePage === 'Assessment Analysis' && <PhysioAssessment />}
         </div>
       </main>
     </div>
