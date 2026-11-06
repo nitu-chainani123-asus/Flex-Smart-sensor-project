@@ -3,7 +3,8 @@ import { useState } from 'react'
 import PhysioSidebar from '../components/PhysioSidebar'
 import MyPatients from './MyPatients'
 import PatientDetails from './PatientDetails'
-import PhysioDashboard from './physiodashboard'
+import PhysioDashboard from './PhysioDashboard'
+import PhysioAssessment from './Physioassessment'
 
 function PhysioPage() {
   const [activePage, setActivePage] = useState('My Patients')
@@ -30,6 +31,7 @@ function PhysioPage() {
             <PatientDetails patient={selectedPatient} />
           )}
           {activePage === 'Dashboard Overview' && <PhysioDashboard />}
+          {activePage === 'Assessment Analysis' && <PhysioAssessment />}
         </div>
       </main>
     </div>

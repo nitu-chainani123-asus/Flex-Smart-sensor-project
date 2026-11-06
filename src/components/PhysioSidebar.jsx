@@ -1,10 +1,11 @@
 
 function PhysioSidebar({ activePage, setActivePage }) {
-  const menuItems = [
+ const menuItems = [
     { name: 'Dashboard Overview', icon: '⌂' },
     { name: 'My Patients', icon: '♙' },
     { name: 'Patient Details', icon: '▤' },
-  ]
+    { name: 'Assessment Analysis', icon: '▥' },
+]
 
   return (
     <aside className="flex w-full shrink-0 flex-col bg-[#14233f] text-white md:min-h-screen md:w-64">
