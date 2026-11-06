@@ -3,12 +3,8 @@ import { useState } from 'react'
 import PhysioSidebar from '../components/PhysioSidebar'
 import MyPatients from './MyPatients'
 import PatientDetails from './PatientDetails'
-<<<<<<< HEAD
 import PhysioDashboard from './PhysioDashboard'
 import PhysioAssessment from './PhysioAssessment'
-=======
-import PhysioDashboard from './physiodashboard'
->>>>>>> 46770a15edc102b78530d78feee188a47fc0dd97
 
 function PhysioPage() {
   const [activePage, setActivePage] = useState('My Patients')
