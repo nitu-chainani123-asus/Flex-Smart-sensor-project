@@ -1,64 +1,13 @@
 import { useState } from 'react'
 
-function AdminUserManagement() {
-
-  // Sample user records
-  const [users, setUsers] = useState([
-    {
-      id: 'SF-P001',
-      name: 'Aarav Sharma',
-      email: 'aarav@gmail.com',
-      role: 'Patient',
-      isActive: true,
-      createdAt: '12 Oct 2026',
-    },
-    {
-      id: 'SF-P002',
-      name: 'Priya Verma',
-      email: 'priya@gmail.com',
-      role: 'Patient',
-      isActive: true,
-      createdAt: '15 Oct 2026',
-    },
-    {
-      id: 'SF-P003',
-      name: 'Rohan Patel',
-      email: 'rohan@gmail.com',
-      role: 'Patient',
-      isActive: false,
-      createdAt: '18 Oct 2026',
-    },
-    {
-      id: 'SF-PT001',
-      name: 'Dr. Anjali Mehta',
-      email: 'anjali@gmail.com',
-      role: 'Physiotherapist',
-      isActive: true,
-      createdAt: '10 Oct 2026',
-    },
-    {
-      id: 'SF-PT002',
-      name: 'Dr. Rahul Deshmukh',
-      email: 'rahul@gmail.com',
-      role: 'Physiotherapist',
-      isActive: true,
-      createdAt: '14 Oct 2026',
-    },
-    {
-      id: 'SF-A001',
-      name: 'Admin User',
-      email: 'admin@smartflex.com',
-      role: 'Admin',
-      isActive: true,
-      createdAt: '01 Oct 2026',
-    },
-  ])
+function AdminUserManagement({ users, setUsers }) {
 
   const [search, setSearch] = useState('')
   const [roleFilter, setRoleFilter] = useState('All')
   const [statusFilter, setStatusFilter] = useState('All')
 
-  const [selectedUser, setSelectedUser] = useState(null)
+  const [selectedUserId, setSelectedUserId] = useState(null)
+  const selectedUser = users.find(user => user.id === selectedUserId) || null
 
   const [activityLogs, setActivityLogs] = useState([
     {
@@ -91,7 +40,8 @@ function AdminUserManagement() {
 
     const matchesSearch =
       user.name.toLowerCase().includes(search.toLowerCase()) ||
-      user.email.toLowerCase().includes(search.toLowerCase())
+      user.email.toLowerCase().includes(search.toLowerCase()) ||
+      user.id.toLowerCase().includes(search.toLowerCase())
 
     const matchesRole =
       roleFilter === 'All' || user.role === roleFilter
@@ -121,19 +71,21 @@ function AdminUserManagement() {
 
   }
 
+  const updateUser = (userId, updates) => {
+    setUsers(previous =>
+      previous.map(item =>
+        item.id === userId ? { ...item, ...updates } : item
+      )
+    )
+  }
+
 
   // Activate or deactivate account
   const toggleStatus = (user) => {
 
     const newStatus = !user.isActive
 
-    setUsers(previous =>
-      previous.map(item =>
-        item.id === user.id
-          ? { ...item, isActive: newStatus }
-          : item
-      )
-    )
+    updateUser(user.id, { isActive: newStatus })
 
     addLog(
       newStatus ? 'Account Activated' : 'Account Deactivated',
@@ -148,13 +100,7 @@ function AdminUserManagement() {
 
     if (user.role === newRole) return
 
-    setUsers(previous =>
-      previous.map(item =>
-        item.id === user.id
-          ? { ...item, role: newRole }
-          : item
-      )
-    )
+    updateUser(user.id, { role: newRole })
 
     addLog(
       'User Role Changed',
@@ -198,8 +144,8 @@ function AdminUserManagement() {
 
         <p className="mt-1 text-sm leading-6 text-blue-800">
           Displaying sample user records. Actual account
-          information will be retrieved from MongoDB after
-          backend integration.
+          records and management actions are not connected to
+          backend services. Changes here apply to this demo only.
         </p>
 
       </div>
@@ -452,7 +398,7 @@ function AdminUserManagement() {
                       <div className="flex flex-wrap gap-2">
 
                         <button
-                          onClick={() => setSelectedUser(user)}
+                          onClick={() => setSelectedUserId(user.id)}
                           className="rounded-lg bg-blue-50 px-3 py-2 text-xs font-semibold text-blue-700 transition hover:bg-blue-100"
                         >
                           View
@@ -520,16 +466,21 @@ function AdminUserManagement() {
 
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4">
 
-          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="user-details-title"
+            className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl"
+          >
 
             <div className="flex items-center justify-between">
 
               <h2 className="text-xl font-bold text-slate-900">
-                User Details
+                <span id="user-details-title">User Details</span>
               </h2>
 
               <button
-                onClick={() => setSelectedUser(null)}
+                onClick={() => setSelectedUserId(null)}
                 className="rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100"
                 aria-label="Close user details"
               >
@@ -569,7 +520,7 @@ function AdminUserManagement() {
             </div>
 
             <button
-              onClick={() => setSelectedUser(null)}
+              onClick={() => setSelectedUserId(null)}
               className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
             >
               Close

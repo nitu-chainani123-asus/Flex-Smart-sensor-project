@@ -1,0 +1,32 @@
+export const demoAssessment = {
+  id: 'SF-AS-001',
+  reportId: 'SF-REP-001',
+  patientId: 'SF-P001',
+  patientName: 'Aarav Sharma',
+  date: '31 October 2026',
+  time: '10:30 AM',
+  joint: 'Knee',
+  deviceId: 'SF-DEVICE-001',
+  status: 'Completed',
+  minAngle: 10,
+  maxAngle: 125,
+  rangeOfMotion: 115,
+  aiClassification: 'Normal Range',
+  modelVersion: 'Model v1.0',
+  confidence: 92,
+  duration: '02:35 Minutes',
+  generatedDate: '31 October 2026',
+}
+
+export const demoReadings = [
+  { time: '10:30:00', angle: 10 },
+  { time: '10:30:10', angle: 25 },
+  { time: '10:30:20', angle: 42 },
+  { time: '10:30:30', angle: 58 },
+  { time: '10:30:40', angle: 75 },
+  { time: '10:30:50', angle: 90 },
+  { time: '10:31:00', angle: 105 },
+  { time: '10:31:10', angle: 125 },
+  { time: '10:31:20', angle: 110 },
+  { time: '10:31:30', angle: 85 },
+]

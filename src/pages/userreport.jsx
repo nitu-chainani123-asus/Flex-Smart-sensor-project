@@ -1,63 +1,29 @@
+import { demoAssessment, demoReadings } from './demoAssessment'
+
 function UserReport() {
-
-  // SAMPLE REPORT DATA
-
   const report = {
-    reportId: 'SF-REP-001',
-
-    patientId: 'SF-P001',
-    patientName: 'Aarav Sharma',
-
-    assessmentId: 'SF-AS-001',
-
-    assessmentDate: '31 October 2026',
-    assessmentTime: '10:30 AM',
-
-    joint: 'Knee',
-
-    deviceId: 'SF-DEVICE-001',
-
-    status: 'Completed',
-
-    minAngle: 10,
-    maxAngle: 125,
-    rangeOfMotion: 115,
-
-    duration: '02:35 Minutes',
-
-    aiClassification: 'Normal Range',
-
-    modelVersion: 'Model v1.0',
-
-    confidence: 92,
-
-    generatedDate: '31 October 2026',
+    ...demoAssessment,
+    assessmentId: demoAssessment.id,
+    assessmentDate: demoAssessment.date,
+    assessmentTime: demoAssessment.time,
   }
-
-
-  // SAMPLE GRAPH DATA
-
-  const readings = [
-    10, 25, 42, 58, 75, 90, 105, 125, 110, 85
-  ]
-
 
   // SVG GRAPH
 
-  const points = readings.map((value, index) => {
+  const points = demoReadings.map(({ angle }, index) => {
 
     const x = 45 + index * 68
 
-    const y = 220 - (value / 150) * 175
+    const y = 220 - (angle / 150) * 175
 
     return `${x},${y}`
 
   }).join(' ')
 
 
-  // DOWNLOAD REPORT
+  // Open the browser's print dialog, where users can print or save as PDF.
 
-  const downloadReport = () => {
+  const printReport = () => {
 
     window.print()
 
@@ -91,10 +57,10 @@ function UserReport() {
 
 
         <button
-          onClick={downloadReport}
+          onClick={printReport}
           className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 print:hidden"
         >
-          ↓ Download / Print Report
+          Print / Save as PDF
         </button>
 
       </div>
@@ -102,15 +68,15 @@ function UserReport() {
 
       {/* DEMO NOTICE */}
 
-      <div className="mb-7 rounded-2xl border border-amber-200 bg-amber-50 p-4 print:hidden">
+      <div className="mb-7 rounded-2xl border border-amber-200 bg-amber-50 p-4">
 
         <p className="font-semibold text-amber-900">
           Demonstration Report
         </p>
 
         <p className="mt-1 text-sm text-amber-800">
-          This report contains illustrative sample data.
-          It is not an actual clinical report.
+          This report contains illustrative sample data from the
+          demonstration assessment. It is not a clinical report.
         </p>
 
       </div>
@@ -284,7 +250,7 @@ function UserReport() {
           </h3>
 
           <p className="mt-1 text-sm text-slate-500">
-            Recorded angle measurements during the session
+            Recorded sample angle measurements from the demonstration assessment
           </p>
 
 
@@ -339,12 +305,12 @@ function UserReport() {
               />
 
 
-              {readings.map((value, index) => (
+              {demoReadings.map(({ angle }, index) => (
 
                 <circle
                   key={index}
                   cx={45 + index * 68}
-                  cy={220 - (value / 150) * 175}
+                  cy={220 - (angle / 150) * 175}
                   r="4"
                   fill="#2563eb"
                 />
@@ -426,9 +392,8 @@ function UserReport() {
 
 
           <p className="mt-3 text-xs leading-6 text-slate-500">
-            AI output is an assessment classification and not
-            a medical diagnosis. Interpretation should be
-            performed by a qualified physiotherapist.
+            This is a sample AI classification, not a clinical result or
+            medical diagnosis. AI results are not connected to a live model.
           </p>
 
         </div>
@@ -490,10 +455,10 @@ function UserReport() {
       <div className="mt-6 flex justify-end print:hidden">
 
         <button
-          onClick={downloadReport}
+          onClick={printReport}
           className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
         >
-          Download Report as PDF
+          Print / Save as PDF
         </button>
 
       </div>

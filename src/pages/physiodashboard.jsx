@@ -1,9 +1,4 @@
-import { useState } from 'react'
-
 function PhysioDashboard() {
-
-  const [selectedPeriod, setSelectedPeriod] = useState('This Week')
-
   const stats = [
     {
       title: 'Total Patients',

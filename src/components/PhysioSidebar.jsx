@@ -24,7 +24,7 @@ function PhysioSidebar({ activePage, setActivePage }) {
         </div>
       </div>
 
-      <nav className="flex gap-2 p-3 md:flex-col md:p-4">
+      <nav className="flex gap-2 overflow-x-auto p-3 md:flex-col md:p-4">
         <p className="hidden px-3 pb-2 pt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 md:block">
           Physio Workspace
         </p>
@@ -33,7 +33,7 @@ function PhysioSidebar({ activePage, setActivePage }) {
           <button
             key={item.name}
             onClick={() => setActivePage(item.name)}
-            className={`flex items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium transition ${
+            className={`flex shrink-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium transition ${
               activePage === item.name
                 ? 'bg-blue-600 text-white'
                 : 'text-slate-300 hover:bg-white/5 hover:text-white'
@@ -58,4 +58,3 @@ function PhysioSidebar({ activePage, setActivePage }) {
 }
 
 export default PhysioSidebar
-
