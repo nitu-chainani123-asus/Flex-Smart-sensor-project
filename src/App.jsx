@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Sidebar from './components/Sidebar'
 import AdminPage from './pages/AdminPage'
 import PhysioPage from './pages/PhysioPage'
+import LiveMonitoring from './pages/LiveMonitoring'
 import UserAssessment from './pages/userassessment'
 import UserReport from './pages/userreport'
 const exercises = [
@@ -433,6 +434,7 @@ if (previewRole === 'Physiotherapist') {
               {activePage === 'Assessment Report' && (
               <UserReport />
             )}
+              {activePage === 'Live Monitoring' && <LiveMonitoring />}
           
         </main>
       </div>

@@ -2,6 +2,7 @@
 function Sidebar({ activePage, setActivePage }) {
   const menuItems = [
     { name: 'Dashboard Overview', icon: '⌂' },
+    { name: 'Live Monitoring', icon: '⌁' },
     { name: 'Exercise Plan', icon: '✳' },
     { name: 'Help Centre', icon: '?' },
     { name: 'Assessment Details', icon: '▤' },
